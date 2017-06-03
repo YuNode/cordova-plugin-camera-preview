@@ -351,9 +351,9 @@ public class CameraActivity extends Fragment {
   }
 
   ShutterCallback shutterCallback = new ShutterCallback(){
-    public void onShutter(){
-      // do nothing, availabilty of this callback causes default system shutter sound to work
-    }
+    // public void onShutter(){
+    //   // do nothing, availabilty of this callback causes default system shutter sound to work
+    // }
   };
 
   PictureCallback jpegPictureCallback = new PictureCallback(){
