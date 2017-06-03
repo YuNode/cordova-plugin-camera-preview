@@ -106,11 +106,11 @@ public class CameraActivity extends Fragment {
 
   private void createCameraPreview(){
      
-         Camera.CameraInfo info = new Camera.CameraInfo();
-Camera.getCameraInfo(id, info);
-if (info.canDisableShutterSound) {
-    mCamera.enableShutterSound(false);
-}
+//          Camera.CameraInfo info = new Camera.CameraInfo();
+// Camera.getCameraInfo(id, info);
+// if (info.canDisableShutterSound) {
+//     mCamera.enableShutterSound(false);
+// }
 
 
     if(mPreview == null) {
@@ -350,11 +350,11 @@ if (info.canDisableShutterSound) {
     return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);
   }
 
-  // ShutterCallback shutterCallback = new ShutterCallback(){
-  //   public void onShutter(){
-  //     // do nothing, availabilty of this callback causes default system shutter sound to work
-  //   }
-  // };
+  ShutterCallback shutterCallback = new ShutterCallback(){
+    public void onShutter(){
+      // do nothing, availabilty of this callback causes default system shutter sound to work
+    }
+  };
 
   PictureCallback jpegPictureCallback = new PictureCallback(){
     public void onPictureTaken(byte[] data, Camera arg1){
