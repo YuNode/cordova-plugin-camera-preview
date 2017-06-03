@@ -106,11 +106,6 @@ public class CameraActivity extends Fragment {
 
   private void createCameraPreview(){
      
-         Camera.CameraInfo info = new Camera.CameraInfo();
-Camera.getCameraInfo(id, info);
-if (info.canDisableShutterSound) {
-    mCamera.enableShutterSound(false);
-}
 
 
     if(mPreview == null) {
@@ -208,12 +203,14 @@ if (info.canDisableShutterSound) {
     numberOfCameras = Camera.getNumberOfCameras();
 
     int camId = defaultCamera.equals("front") ? Camera.CameraInfo.CAMERA_FACING_FRONT : Camera.CameraInfo.CAMERA_FACING_BACK;
-
     // Find the ID of the default camera
     Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
     for (int i = 0; i < numberOfCameras; i++) {
       Camera.getCameraInfo(i, cameraInfo);
       if (cameraInfo.facing == camId) {
+
+
+
         defaultCameraId = camId;
         break;
       }
@@ -225,6 +222,9 @@ if (info.canDisableShutterSound) {
     super.onResume();
 
     mCamera = Camera.open(defaultCameraId);
+
+    mCamera.enableShutterSound(false);
+
 
     if (cameraParameters != null) {
       mCamera.setParameters(cameraParameters);
@@ -305,6 +305,7 @@ if (info.canDisableShutterSound) {
 
       // Acquire the next camera and request Preview to reconfigure parameters.
       mCamera = Camera.open(cameraCurrentlyLocked);
+      mCamera.enableShutterSound(false);
 
       if (cameraParameters != null) {
         Log.d(TAG, "camera parameter not null");
